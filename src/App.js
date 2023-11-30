@@ -6,9 +6,9 @@ import TodoForm from "./components/TodoForm";
 function App() {
   const [todos, setTodos] = useState([]);
 
-  const fetchTodos = async () => {
+  const fetchTodos = async (querystring = "") => {
     try {
-      const res = await axios.get("http://localhost:8080/todos");
+      const res = await axios.get("http://localhost:8080/todos" + querystring);
       setTodos(res.data.todos);
     } catch (err) {
       console.log(err);
