@@ -5,11 +5,13 @@ import TodoForm from "./components/TodoForm";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [total, setTotal] = useState(0);
 
   const fetchTodos = async (querystring = "") => {
     try {
       const res = await axios.get("http://localhost:8080/todos" + querystring);
       setTodos(res.data.todos);
+      setTotal(res.data.total);
     } catch (err) {
       console.log(err);
     }
@@ -24,7 +26,7 @@ function App() {
     //   .catch(err => {
     //     console.log(err);
     //   });
-    fetchTodos();
+    // fetchTodos();
   }, []);
 
   const handleSubmitCreate = async (title) => {
@@ -43,7 +45,7 @@ function App() {
       <div className="my-4">
         <TodoForm onSubmit={handleSubmitCreate} />
       </div>
-      <TodoContainer todos={todos} fetchTodos={fetchTodos} />
+      <TodoContainer todos={todos} fetchTodos={fetchTodos} total={total} />
     </div>
   );
 }
