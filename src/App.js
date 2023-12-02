@@ -6,6 +6,7 @@ import TodoForm from "./components/TodoForm";
 function App() {
   const [todos, setTodos] = useState([]);
   const [total, setTotal] = useState(0);
+  const [triggerFilter, setTriggerFilter] = useState(false);
 
   const fetchTodos = async (querystring = "") => {
     try {
@@ -35,7 +36,8 @@ function App() {
         title,
         completed: false
       });
-      fetchTodos();
+      setTriggerFilter(!triggerFilter);
+      // fetchTodos();
     } catch (err) {
       console.log(err);
     }
@@ -45,7 +47,12 @@ function App() {
       <div className="my-4">
         <TodoForm onSubmit={handleSubmitCreate} />
       </div>
-      <TodoContainer todos={todos} fetchTodos={fetchTodos} total={total} />
+      <TodoContainer
+        todos={todos}
+        fetchTodos={fetchTodos}
+        total={total}
+        trigger={triggerFilter}
+      />
     </div>
   );
 }
