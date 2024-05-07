@@ -1,8 +1,6 @@
 import "./App.css";
 import TodoForm from "./components/TodoForm";
 import TodoContainer from "./components/TodoContainer";
-import TodoList from "./components/TodoList";
-import Pagination from "./components/Pagination";
 
 function App() {
   return (
@@ -11,15 +9,6 @@ function App() {
         <TodoForm />
       </div>
       <TodoContainer />
-      <TodoList />
-
-      <div className="my-2 d-flex justify-content-between align-items-center">
-        <small className="text-muted">Showing 6 to 10 of 12 entries</small>
-        <Pagination />
-        {/* ********** PAGINATION ********** */}
-
-        {/* ********** END PAGINATION ********** */}
-      </div>
     </div>
   );
 }
